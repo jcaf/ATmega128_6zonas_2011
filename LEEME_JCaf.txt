@@ -1,0 +1,2 @@
+- todos las fuentes son copiadas desde LIBRARY_JCaf
+- son modificadas localmente y luego seran re-copiadas/actualizadas a LIBRARY_JCaf, para un mejor codigo de la misma.

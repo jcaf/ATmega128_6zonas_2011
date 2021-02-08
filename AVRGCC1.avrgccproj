@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>5.0</ProjectVersion>
+    <ProjectGuid>{c38acbb2-9bfc-4507-b0ff-e0b540ecf26c}</ProjectGuid>
+    <avrdevice>ATmega128</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFile>$(MSBuildProjectName).elf</OutputFile>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <UseGlobalToolchain>True</UseGlobalToolchain>
+    <ToolchainDirPath>
+    </ToolchainDirPath>
+    <MakeDirPath>
+    </MakeDirPath>
+    <GlobalToolchainPath>C:\Program Files (x86)\Atmel\AVR Studio 5.0\AVR ToolChain\bin</GlobalToolchainPath>
+    <AvrGccProjectExtensions>
+    </AvrGccProjectExtensions>
+    <AssemblyName>AVRGCC1</AssemblyName>
+    <Name>AVRGCC1</Name>
+    <RootNamespace>AVRGCC1</RootNamespace>
+    <avrtool>com.atmel.avrdbg.tool.simulator</avrtool>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>E:\DATA\PROYECTOS\I.R DIMMER\HOME_6_ZONAS_SET_2011\FIRMWARE\HOMEWORKSv30\AVRGCC1\AVRGCC1</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+      <MemorySegments>
+        <InitialStack IsEnabled="0">
+          <Address>0xff00</Address>
+        </InitialStack>
+      </MemorySegments>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>E:\DATA\PROYECTOS\I.R DIMMER\HOME_6_ZONAS_SET_2011\FIRMWARE\HOMEWORKSv30\AVRGCC1\AVRGCC1</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-g2)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+    <MemorySettings>
+      <MemorySegments>
+        <InitialStack IsEnabled="0">
+          <Address>0xff00</Address>
+        </InitialStack>
+      </MemorySegments>
+    </MemorySettings>
+    <GenerateHexFile>True</GenerateHexFile>
+    <GenerateMapFile>True</GenerateMapFile>
+    <GenerateListFile>True</GenerateListFile>
+    <GenerateEepFile>True</GenerateEepFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BUZZER\Buzzer.h">
+      <SubType>compile</SubType>
+      <Link>Buzzer.h</Link>
+    </Compile>
+    <Compile Include="BUZZER\Buzzer_1.c">
+      <SubType>compile</SubType>
+      <Link>Buzzer_1.c</Link>
+    </Compile>
+    <Compile Include="DIMMING\Dimming.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DIMMING\Dimming_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DS3231\DS3231.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="DS3231\DS3231_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GLCD192X64\GLCD192x64.h">
+      <SubType>compile</SubType>
+      <Link>GLCD192x64.h</Link>
+    </Compile>
+    <Compile Include="GLCD192X64\GLCD192x64_01.c">
+      <SubType>compile</SubType>
+      <Link>GLCD192x64_01.c</Link>
+    </Compile>
+    <Compile Include="I2C\I2C.h">
+      <SubType>compile</SubType>
+      <Link>I2C.h</Link>
+    </Compile>
+    <Compile Include="I2C\I2CCommonFx.c">
+      <SubType>compile</SubType>
+      <Link>I2CCommonFx.c</Link>
+    </Compile>
+    <Compile Include="I2C\I2CCommonFx.h">
+      <SubType>compile</SubType>
+      <Link>I2CCommonFx.h</Link>
+    </Compile>
+    <Compile Include="I2C\I2C_01.c">
+      <SubType>compile</SubType>
+      <Link>I2C_01.c</Link>
+    </Compile>
+    <Compile Include="Includes\DefinicionesGrl.h">
+      <SubType>compile</SubType>
+      <Link>DefinicionesGrl.h</Link>
+    </Compile>
+    <Compile Include="Includes\InitializeAllModules.h">
+      <SubType>compile</SubType>
+      <Link>InitializeAllModules.h</Link>
+    </Compile>
+    <Compile Include="Includes\InitPeripheral.h">
+      <SubType>compile</SubType>
+      <Link>InitPeripheral.h</Link>
+    </Compile>
+    <Compile Include="Includes\IODevicePin.H">
+      <SubType>compile</SubType>
+      <Link>IODevicePin.H</Link>
+    </Compile>
+    <Compile Include="Includes\TypeDefs.h">
+      <SubType>compile</SubType>
+      <Link>TypeDefs.h</Link>
+    </Compile>
+    <Compile Include="KEYBOARD\KeyboardHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="KEYBOARD\KeyboardHandler_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="KEYBOARD\KeyboradAttachToApplication_1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="KS108v1\arial_bold_14.h">
+      <SubType>compile</SubType>
+      <Link>arial_bold_14.h</Link>
+    </Compile>
+    <Compile Include="KS108v1\Bitmap.c">
+      <SubType>compile</SubType>
+      <Link>Bitmap.c</Link>
+    </Compile>
+    <Compile Include="KS108v1\Bitmap.h">
+      <SubType>compile</SubType>
+      <Link>Bitmap.h</Link>
+    </Compile>
+    <Compile Include="KS108v1\corsiva_12.h">
+      <SubType>compile</SubType>
+      <Link>corsiva_12.h</Link>
+    </Compile>
+    <Compile Include="KS108v1\font12x16.h">
+      <SubType>compile</SubType>
+      <Link>font12x16.h</Link>
+    </Compile>
+    <Compile Include="KS108v1\ks0108.c">
+      <SubType>compile</SubType>
+      <Link>ks0108.c</Link>
+    </Compile>
+    <Compile Include="KS108v1\ks0108.h">
+      <SubType>compile</SubType>
+      <Link>ks0108.h</Link>
+    </Compile>
+    <Compile Include="KS108v1\SC.h">
+      <SubType>compile</SubType>
+      <Link>SC.h</Link>
+    </Compile>
+    <Compile Include="main1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MENU\MenuDimming6Zonas\MenuDimming6Zonas.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MENU\MenuDimming6Zonas\MenuDimming6Zonas_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MENU\MENU_MAIN.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MENU\Menu_Main_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PWM\PWM.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PWM\PWM_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RS485\RS485.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RS485\RS485_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TCNT0\TCNT0.h">
+      <SubType>compile</SubType>
+      <Link>TCNT0.h</Link>
+    </Compile>
+    <Compile Include="TCNT0\TCNT0_01.c">
+      <SubType>compile</SubType>
+      <Link>TCNT0_01.c</Link>
+    </Compile>
+    <Compile Include="TEST.H">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="USART\USART.h">
+      <SubType>compile</SubType>
+      <Link>USART.h</Link>
+    </Compile>
+    <Compile Include="USART\USART_01.c">
+      <SubType>compile</SubType>
+      <Link>USART_01.c</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DS3231" />
+    <Folder Include="MENU" />
+    <Folder Include="KEYBOARD" />
+    <Folder Include="DIMMING" />
+    <Folder Include="MENU\MenuDimming6Zonas" />
+    <Folder Include="PWM" />
+    <Folder Include="RS485" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\AvrGCC.targets" />
+</Project>
