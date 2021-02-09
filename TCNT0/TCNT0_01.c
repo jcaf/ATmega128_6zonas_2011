@@ -1,10 +1,10 @@
 /*****************************************************************************************************************
 	TCNT0_Init_Config:
-		//Configuración para TCNT0 como TEMPORIZADOR
+		//Configuraciï¿½n para TCNT0 como TEMPORIZADOR
 		//ldi		temp0,(0<<FOC0 | WGM01_0_MODE_0_NORMAL | COM01_COM00_NORMAL_OC0_DISCONNECTED | CS02_00_CLCK_8 )
 		//out		TCCR0,temp0
 
-		;Configuración para TCNT0 como Clear on Timer On Compare CTC
+		;Configuraciï¿½n para TCNT0 como Clear on Timer On Compare CTC
 		;ldi		temp0,77		//77->5ms
 		//LDI		temp0,31		//31 ->2ms
 
@@ -22,7 +22,7 @@
     Las definiciones y las macros pueden tomar en cualquier momento nuevos valores
     validos para cualquier punto del programa siempre y cuando se corresponda
     i.e:	CS02_00_CLCK_64 = PRESCALER_TCNT0_64
-    en cuanto a una nueva configuración en TCCR0 (Timer Counter Control Register0)
+    en cuanto a una nueva configuraciï¿½n en TCCR0 (Timer Counter Control Register0)
 	
 	TIMER0_COMP_MATCH_INTERRUPT: ms interrupt MAX 32ms@8MHz/16ms@16MHz
     
@@ -33,7 +33,7 @@
 	
 	void InitTCNT0(void)
 	{
-		//Inicialización x CTC
+		//Inicializaciï¿½n x CTC
 	    //OCR0 =	KTE_TIME_FOR_CTC( TKTE_CTC_TCNT0, PRESCALER_TCNT0_1024 );   //MaxValue:16ms@16MHz /32ms@8MHz
 		OCR0 =	KTE_TIME_FOR_CTC( 0.125*ms, PRESCALER_TCNT0_1024 );   //MaxValue:16ms@16MHz /32ms@8MHz
         TCCR0 = (0<<FOC0 | WGM01_0_MODE_2_CTC | COM01_COM00_NORMAL_OC0_DISCONNECTED | CS02_00_CLCK_1024 );
@@ -53,6 +53,8 @@
 			__CounterAccess1__ = 0;
 			//------------------------------------
 			
+            
+            
 			KB_KeyboardProcess();
 			
 			#ifdef _BUZZER_
@@ -66,7 +68,7 @@
 			//
 			TIMER0_IsActiveFading();		//PeriodicCallTo_FadingProcess
 			
-Timmer_TimmingToBackScene();	//Retornar despues de x seg. a escena donde se encontraba.
+            Timmer_TimmingToBackScene();	//Retornar despues de x seg. a escena donde se encontraba.
 		
 			//
 			ScheduleTimmerKeepAlive_BLGLCD();
