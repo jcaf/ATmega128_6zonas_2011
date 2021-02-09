@@ -41,6 +41,7 @@ Apto x entregar a Bruno
 
  */ 
 #include "Includes/InitializeAllModules.h"
+#include "main.h"
 
 
 	volatile byte _sreg_temp_main_;	//extern en DefinicionesGrl.h
@@ -90,6 +91,13 @@ Apto x entregar a Bruno
 	#endif
 
 	static void InitSystem(void);
+    
+    
+     //+--Added 2021
+    volatile struct _isr_flag isr_flag = { 0 };
+    struct _main_flag main_flag = { 0 };
+    //--+
+    
 
 	int main(void) 
 	{

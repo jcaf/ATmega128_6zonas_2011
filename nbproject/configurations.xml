@@ -132,6 +132,7 @@
       <itemPath>KS108v1/FONTS/SC.h</itemPath>
       <itemPath>KS108v1/FONTS/corsiva_12.h</itemPath>
       <itemPath>KS108v1/FONTS/arial_bold_14.h</itemPath>
+      <itemPath>KS108v1/main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

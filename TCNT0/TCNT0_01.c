@@ -18,6 +18,7 @@
 	ret	//End fx()
 *****************************************************************************************************************/
     #include "Includes/InitializeAllModules.h"
+    #include "main.h"
     /***********************************************************************************************
     Las definiciones y las macros pueden tomar en cualquier momento nuevos valores
     validos para cualquier punto del programa siempre y cuando se corresponda
@@ -53,25 +54,21 @@
 			__CounterAccess1__ = 0;
 			//------------------------------------
 			
+            isr_flag.f40ms = 1;//added 2021
             
-            
-			KB_KeyboardProcess();
+			//KB_KeyboardProcess();//go to Shell_5.c
 			
 			#ifdef _BUZZER_
 			if (Buzzer.bfBuzzer.SoundEnable)
 				{BuzzerScheduler();}
 			#endif
 			
-			if (bfCommonProcess0.Timmer_BlinkCaption)
-				{TimmingHandler_BlinkCaption();}
-			
-			//
-			TIMER0_IsActiveFading();		//PeriodicCallTo_FadingProcess
-			
-            Timmer_TimmingToBackScene();	//Retornar despues de x seg. a escena donde se encontraba.
-		
-			//
-			ScheduleTimmerKeepAlive_BLGLCD();
+//			if (bfCommonProcess0.Timmer_BlinkCaption)
+//				{TimmingHandler_BlinkCaption();}
+//			//
+//			TIMER0_IsActiveFading();		//PeriodicCallTo_FadingProcess
+//            Timmer_TimmingToBackScene();	//Retornar despues de x seg. a escena donde se encontraba.
+//			ScheduleTimmerKeepAlive_BLGLCD();
 
 			//++++++++++
 			//con 20ms de acceso, se cubre (max 8-bits)255*20ms = 5100ms = 5,1s q cubre las necesidades para el tiempo

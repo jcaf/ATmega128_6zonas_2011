@@ -5,7 +5,7 @@
  *  Author: jcaf
  */ 
 #include "Includes/InitializeAllModules.h"
-
+#include "main.h"
 	static void key1_1fmode0(void);
 	static void key2_1fmode0(void);
 	static void key3_1fmode0(void);
@@ -53,8 +53,7 @@
 	///////////////////////////////////////////////////////////////
 	//
 	///////////////////////////////////////////////////////////////
-   
-    
+  
 	void Shell_main(void)
 	{
 		thisps.operating_mode = 0;
@@ -81,8 +80,30 @@
 			date_printdisp__d();
 				
 			//////////////////////////////////////////////////////////////////////////////////			
-			
-			kb_handler0();
+			kb_handler0(); //2011
+            
+            if (isr_flag.f40ms == 1)
+            {
+                isr_flag.f40ms = 0;
+                main_flag.f40ms = 1;
+            }
+            if (main_flag.f40ms == 1)
+            {
+                KB_KeyboardProcess();
+                kb_handler0();
+                //
+//                #ifdef _BUZZER_
+//                if (Buzzer.bfBuzzer.SoundEnable)
+//                    {BuzzerScheduler();}
+//                #endif
+
+                if (bfCommonProcess0.Timmer_BlinkCaption)
+                    {TimmingHandler_BlinkCaption();}
+                //
+                TIMER0_IsActiveFading();		//PeriodicCallTo_FadingProcess
+                Timmer_TimmingToBackScene();	//Retornar despues de x seg. a escena donde se encontraba.
+                ScheduleTimmerKeepAlive_BLGLCD();
+            }
 			
 			//////////////////////////////////////////////////////////////////////////////////			
 			//When the function has returned this shell
@@ -152,6 +173,10 @@
 			
 			//////////////////////////////////////////////////////////////////////////////////
 			services();
+            
+            //+-
+            main_flag.f40ms = 0;//Added 2021
+            //-+
 		}
 	}
 
