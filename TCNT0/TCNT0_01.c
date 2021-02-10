@@ -78,6 +78,8 @@
 			{
 				__CounterAccess2__ = 0;
 				
+                // Los sgtes timers son ejecutados por timmer_nb__ps(); en sus respectivos archivos
+                 
 				//=====================================================
 				//x MenuSelectDimmNoDimmLoad.c
 				if ( ((_timmer_nb*)p0_this_timmer_nb)[0].run == 1)		

@@ -91,7 +91,8 @@
             {
                 KB_KeyboardProcess();
                 kb_handler0();
-                //
+                
+                //Buzzer se queda en el ISR 
 //                #ifdef _BUZZER_
 //                if (Buzzer.bfBuzzer.SoundEnable)
 //                    {BuzzerScheduler();}
