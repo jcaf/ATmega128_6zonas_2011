@@ -5,7 +5,7 @@
  * 
 [jcaf@firwar production]$ avrdude -c dragon_jtag -P usb -p m128 -U flash:w:ATmega128_6Zonas_2011.X.production.elf
 
- * Para generar el .hex correctamente (restar las secciones que no son codigo ejec.)
+ * Para generar el .hex correctamente (recd star las secciones que no son codigo ejec.)
 [jcaf@firwar production]$ avr-objcopy -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "ATmega128_6Zonas_2011.X.production.elf" "ATmega128_6Zonas_2011.X.production.hex" -R .sobjscene_commonprop_epp  -R .sobjstorage_scene_epp  -R .sobjzone_epp
 
  *  * 
@@ -15,6 +15,10 @@
  *
  * Por fin perfectamente configurado con esos comandos... todo OK
 
+ * -Wl,-u,vfprintf -lprintf_flt -lm //2021 deprecado... solo con dtostrf
+ * 
+ * 
+ * 
 .sobjscene_commonprop_epp	@ 0x100
 .sobjstorage_scene_epp		@ 0x200 (+0x200 of free-space)
 .sobjzone_epp				@ 0x400 (+0x200 of free-space)

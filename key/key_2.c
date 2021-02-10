@@ -138,7 +138,7 @@ static void _key4_keys1f(void);
 		if (KB_KEY3_ReadyToRead())
 		{
 			KB_KEY3_HasBeenRead();
-			ResetCounterTimmerForNewKeepingTimmingBLGLCD();	//BackLightGLCD reset-timming
+			ResetCounterTimmerForNewKeepingTimmingBLGLCD();
             
             if (glcd_isWakeup)//2021
             {
@@ -183,6 +183,7 @@ static void _key4_keys1f(void);
 			//if (objkey[KB_iKEY4].bfSTATE.AtTimeExpired_BeforeOrAfter == KB_BEFORE_THR)	{}
 			//else {	if (!objkey[KB_iKEY4].key_properties.u.bf.Reptt){}	else {}	}
 
+        KB_KEY4_HasBeenRead();//2021
         ResetCounterTimmerForNewKeepingTimmingBLGLCD();
         
         if (glcd_isWakeup)//2021
@@ -194,7 +195,7 @@ static void _key4_keys1f(void);
             //+--2011
             key[KB_iKEY4]._1fmode();
 
-            KB_KEY4_HasBeenRead();
+            //KB_KEY4_HasBeenRead();//2011
 
             //PARA LA NATURALEZA DE ESTA TECLA, NO PUEDE
             //ESPERARSE POR if (!objkey[kbhandler_app.ikey].bfSTATE.InProcessing)//esta tecla en particular

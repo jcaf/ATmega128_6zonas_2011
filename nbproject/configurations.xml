@@ -411,7 +411,7 @@
         <property key="flash-segment" value=""/>
         <property key="generate-map-file" value="true"/>
         <property key="initial-stack-address" value=""/>
-        <property key="input-libraries" value="libm;libprintf_flt.a;libm"/>
+        <property key="input-libraries" value=""/>
         <property key="no-default-libs" value="false"/>
         <property key="no-shared-libraries" value="false"/>
         <property key="no-startup-files" value="false"/>
@@ -421,7 +421,6 @@
         <property key="rodata-writable" value="false"/>
         <property key="sram-segment" value=""/>
         <property key="v-printf" value="false"/>
-        <appendMe value="-Wl,-u,vfprintf -lprintf_flt -lm"/>
       </AVR-LD>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>

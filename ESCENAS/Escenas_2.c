@@ -17,7 +17,7 @@ AVR/GNU Linker -> Memory setting -> EEPROM segment (adicionar)
 .sobjzone_epp=0x400                    
 **********************************************/
 #include "Includes/InitializeAllModules.h"
-	
+#include <stdlib.h>
 	//EEMEM _objscene_commonprop_epp objscene_commonprop_epp; //@ offset 256
 	//EEMEM _objstorage_scene objstorage_scene_epp[_NUM_ESCENAS_MAXIMA_]; //@ offset 512 + (512 of space)
 	_objscene_commonprop_epp objscene_commonprop_epp __attribute__((section(".sobjscene_commonprop_epp"))) = {0}; //@ offset 256
@@ -238,7 +238,8 @@ _write_display_threshold_allzone();
 	void print_numberofscene(byte scene)
 	{
 		char ascii[10];
-		sprintf(ascii,"%i",(scene));
+		//sprintf(ascii,"%i",(scene));//2011
+        itoa(scene, ascii, 10 );
 		ks0108Puts(ascii);
 	}
 

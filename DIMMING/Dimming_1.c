@@ -8,8 +8,9 @@
 	
  */ 
 #include "Includes/InitializeAllModules.h"
+
 //#include <math.h>
-//#include <stdlib.h>
+#include <stdlib.h>
 	
 	//OCRnx= [OCRnxH:OCRnxL]
 	volatile word *	vOCRnx_Zn[NUM_ZONAS]={&OCRnx_Z1,&OCRnx_Z2,&OCRnx_Z3,&OCRnx_Z4,&OCRnx_Z5,&OCRnx_Z6};
@@ -187,13 +188,18 @@
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	void dcporcentz(TYPEDC dc)
 	{
-		char porcent_ascii[7];
+		char porcent_ascii[10];
 		
-		double porcent = ((double)(dc*100.0)) /((double)(MAX_VAL_DUTYCYCLE));
+		//double porcent = ((double)(dc*100.0)) /((double)(MAX_VAL_DUTYCYCLE));
+        float porcent = (dc*100.0) /MAX_VAL_DUTYCYCLE;
 		
-		sprintf(porcent_ascii, "%.1f", porcent);
-		
+        //+-2011
+        //sprintf(porcent_ascii, "%.1f", porcent);
 		//itoa( (int)porcent, porcent_ascii, 10);
+        //-+
+        
+        //2021
+        dtostrf(porcent, 0,1, porcent_ascii);
 		
 		
 		ks0108SelectFont(SC, ks0108ReadFontData, BLACK);
