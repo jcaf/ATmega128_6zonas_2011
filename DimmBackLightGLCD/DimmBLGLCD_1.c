@@ -68,6 +68,7 @@
 	*/
 	
 	//ejecutado c/0.125ms
+extern int8_t glcd_isWakeup; //Added 2021
 	void SchedulerEvent_PWM_BLGLCD(void)
 	{
 		if (DimmHandler.SchedulerEvent == _DIMMING_DOWN_TO_MIN_BLGLCD_)
@@ -85,6 +86,9 @@
 					{
 						DimmHandler.SchedulerEvent = _RESET_AND_WAITFOR_NEW_EVENT_BLGLCD_;
 						//DimmHandler.CurrentState = _MIN_DC_BLGLCD_;	//Reserved 
+                        
+                        //Added 2021
+                        glcd_isWakeup = 1;
 					}
 				}
 		}

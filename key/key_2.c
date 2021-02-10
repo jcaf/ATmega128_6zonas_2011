@@ -100,37 +100,65 @@ static void _key4_keys1f(void);
 	//////////////////////////////////////////////////////
 	//NO-2DA_Fn		//definitivamente entrarA hasta q se estabilice las "variables"
 	//note: for this model, it is processed de this way
-	static void processing_keys1f(void)
+	
+    int8_t glcd_isWakeup;
+    static void processing_keys1f(void)
 	{
 		if (KB_KEY1_ReadyToRead())
 		{
 			KB_KEY1_HasBeenRead();
 			ResetCounterTimmerForNewKeepingTimmingBLGLCD();	
-			key[KB_iKEY1]._1fmode();
+            
+            if (glcd_isWakeup)//Added 2021
+            {
+                glcd_isWakeup = 0;//Added 2021
+            }
+            else//Added 2021
+            {
+                key[KB_iKEY1]._1fmode();//2011
+            }
+			
 		}
 		else
 		if (KB_KEY2_ReadyToRead())
 		{	
 			KB_KEY2_HasBeenRead();
 			ResetCounterTimmerForNewKeepingTimmingBLGLCD();	
-			key[KB_iKEY2]._1fmode();
+            
+            if (glcd_isWakeup)//Added 2021
+            {
+                glcd_isWakeup = 0;//Added 2021
+            }
+            else
+            {
+                key[KB_iKEY2]._1fmode();//2011
+            }
 		}
 		else 
 		if (KB_KEY3_ReadyToRead())
 		{
 			KB_KEY3_HasBeenRead();
 			ResetCounterTimmerForNewKeepingTimmingBLGLCD();	//BackLightGLCD reset-timming
+            
+            if (glcd_isWakeup)//2021
+            {
+                glcd_isWakeup = 0;//2021
+            }
+            else
+            {
+                //++-//2011
+                if (objkey[KB_iKEY3].bfSTATE.AtTimeExpired_BeforeOrAfter == KB_BEFORE_THR)
+                {	key[KB_iKEY3]._1fmode();	}	
+                else 
+                {	
+                    //if (!objkey[KB_iKEY3].key_properties.u.bf.Reptt) 
+                    //{}	
+                        //else {}
 
-			if (objkey[KB_iKEY3].bfSTATE.AtTimeExpired_BeforeOrAfter == KB_BEFORE_THR)
-			{	key[KB_iKEY3]._1fmode();	}	
-			else 
-			{	
-				//if (!objkey[KB_iKEY3].key_properties.u.bf.Reptt) 
-				//{}	
-					//else {}
-				
-				key[KB_iKEY3]._1fmode_aft();
-			}
+                    key[KB_iKEY3]._1fmode_aft();
+                }
+                //--+
+            }
 		}
 		
 		//Tal vez fue cambiado por alguna funcion,
@@ -154,18 +182,30 @@ static void _key4_keys1f(void);
 	{
 			//if (objkey[KB_iKEY4].bfSTATE.AtTimeExpired_BeforeOrAfter == KB_BEFORE_THR)	{}
 			//else {	if (!objkey[KB_iKEY4].key_properties.u.bf.Reptt){}	else {}	}
-//
-			ResetCounterTimmerForNewKeepingTimmingBLGLCD();
-			key[KB_iKEY4]._1fmode();
 
-		KB_KEY4_HasBeenRead();
-		
-		//PARA LA NATURALEZA DE ESTA TECLA, NO PUEDE
-		//ESPERARSE POR if (!objkey[kbhandler_app.ikey].bfSTATE.InProcessing)//esta tecla en particular
-		//PUES JUSTAMENTE LE DA CHANCE A EJECUTAR LA COMBINARCION CORRESPONDIENTE, D
-		//DEBE SER TRATADA DE MANERA INDEPENDIENTE... SACARLO!!!!!!
-		if (kbhandler_app.scheduler > (KEYMIXSTATES)INHIBITED)	//Add.//Tal vez fue cambiado por alguna funcion,
-			{kbhandler_app.scheduler = (KEYMIXSTATES)WAITFOR_KB_FREE_AND_COMPLETE_PS;}
+        ResetCounterTimmerForNewKeepingTimmingBLGLCD();
+        
+        if (glcd_isWakeup)//2021
+        {
+            glcd_isWakeup = 0;//2021
+        }
+        else
+        {
+            //+--2011
+            key[KB_iKEY4]._1fmode();
+
+            KB_KEY4_HasBeenRead();
+
+            //PARA LA NATURALEZA DE ESTA TECLA, NO PUEDE
+            //ESPERARSE POR if (!objkey[kbhandler_app.ikey].bfSTATE.InProcessing)//esta tecla en particular
+            //PUES JUSTAMENTE LE DA CHANCE A EJECUTAR LA COMBINARCION CORRESPONDIENTE, D
+            //DEBE SER TRATADA DE MANERA INDEPENDIENTE... SACARLO!!!!!!
+            if (kbhandler_app.scheduler > (KEYMIXSTATES)INHIBITED)	//Add.//Tal vez fue cambiado por alguna funcion,
+                {kbhandler_app.scheduler = (KEYMIXSTATES)WAITFOR_KB_FREE_AND_COMPLETE_PS;}
+            
+            //--+
+            
+        }//2021
 	}
 	
 	//////////////////////////////////////////////////////
@@ -175,37 +215,44 @@ static void _key4_keys1f(void);
 		if (objkey[KB_iKEY4].bfSTATE.StableState == KB_KEY_PRESSED)	
 		{
 			ResetCounterTimmerForNewKeepingTimmingBLGLCD();			//while pressing kb4 resetting
+             if (glcd_isWakeup)//2021
+            {
+                glcd_isWakeup = 0;//2021
+            }
+            else
+            {
 		
-			if (KB_KEY1_ReadyToRead())
-			{
-				KB_KEY1_HasBeenRead();
-				key[KB_iKEY1]._2fmode();
-			}
-			//key1=key2=responden a OnKeyPressed
-			//en cambio key3 responde hasta q suelte o
-			//pasao un tiempo, 
-			if (KB_KEY2_ReadyToRead())	
-			{
-				KB_KEY2_HasBeenRead();	
-				key[KB_iKEY2]._2fmode();
-			}
+                //++--2011
+                if (KB_KEY1_ReadyToRead())
+                {
+                    KB_KEY1_HasBeenRead();
+                    key[KB_iKEY1]._2fmode();
+                }
+                //key1=key2=responden a OnKeyPressed //en cambio key3 responde hasta q suelte o //pasao un tiempo, 
+                if (KB_KEY2_ReadyToRead())
+                {
+                    KB_KEY2_HasBeenRead();	
+                    key[KB_iKEY2]._2fmode();
+                }
 
-			//if ( KB_KEY3_ReadyToRead() )
-			if (objkey[KB_iKEY3].bfSTATE.InProcessing)//salida sin clear-buffer
-			{
-				KB_KEY3_HasBeenRead();
-				//no interesa antes o despues
-				//if (objkey[KB_iKEY3].bfSTATE.AtTimeExpired_BeforeOrAfter == KB_BEFORE_THR)	
-				//{}
-				//else
-				//{	if (!objkey[KB_iKEY3].key_properties.u.bf.Reptt)	
-					//{} 
-					//else 
-					//{}	
-				//}
-				
-				key[KB_iKEY3]._2fmode();
-			}		
+                //if ( KB_KEY3_ReadyToRead() )
+                if (objkey[KB_iKEY3].bfSTATE.InProcessing)  //salida sin clear-buffer
+                {
+                    KB_KEY3_HasBeenRead();
+                    //no interesa antes o despues
+                    //if (objkey[KB_iKEY3].bfSTATE.AtTimeExpired_BeforeOrAfter == KB_BEFORE_THR)	
+                    //{}
+                    //else
+                    //{	if (!objkey[KB_iKEY3].key_properties.u.bf.Reptt)	
+                        //{} 
+                        //else 
+                        //{}	
+                    //}
+
+                    key[KB_iKEY3]._2fmode();
+                }		
+                //--++
+            }
 		}
 		else
 			{kbhandler_app.scheduler = (KEYMIXSTATES)WAITFOR_KB_FREE_AND_COMPLETE_PS;}	
